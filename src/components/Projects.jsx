@@ -1,102 +1,123 @@
 import React from 'react'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
+const projects = [
+  {
+    title: 'Student Marketplace',
+    status: 'In progress',
+    description:
+      'Full-stack marketplace with secure authentication, relational data models, and OpenAI-powered content insights. Backend containerized for scalable deployment.',
+    tech: ['React', 'Node.js', 'PostgreSQL', 'Prisma', 'OpenAI API', 'Docker'],
+    github: 'https://github.com/AngelFeliz17/student_marketplace',
+    demo: null,
+    accent: 'from-violet-500/30 to-fuchsia-500/20',
+  },
+  {
+    title: 'Social Media Platform',
+    status: 'Shipped',
+    description:
+      'Full-stack social app with JWT auth, protected routes, Cloudinary media, real-time notifications for likes and comments, and OpenAI for image descriptions and content analysis.',
+    tech: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'Tailwind CSS',
+      'Cloudinary',
+      'OpenAI API',
+    ],
+    github: 'https://github.com/AngelFeliz17/BestSocialApp',
+    demo: 'https://best-social-app.vercel.app/',
+    accent: 'from-cyan-500/30 to-teal-500/20',
+  },
+  {
+    title: 'Point of Sale (POS) System',
+    status: 'Shipped',
+    description:
+      'Sales and inventory system with CRUD for products, categories, and transactions; real-time stock updates and sales reporting for business insights.',
+    tech: ['TypeScript', 'TypeORM', 'MySQL', 'Tailwind CSS'],
+    github: null,
+    demo: null,
+    accent: 'from-amber-500/25 to-orange-500/15',
+  },
+]
+
 const Projects = () => {
-  const projects = [
-    {
-      title: 'Social Media',
-      description:
-        'Developed a full-stack social media platform with automated image description generation.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Cloudinary', 'OpenAI'],
-      github: 'https://github.com/AngelFeliz17/BestSocialApp',
-      demo: 'https://best-social-app.vercel.app/',
-      image: 'bg-gradient-to-br from-blue-400 to-purple-500',
-    },
-    {
-      title: 'Task Planner (To-do list)',
-      description:
-        'Built a full-stack to-do list application, with file upload functionality.',
-      tech: ['React', 'FastAPI', 'PostgreSQL', 'Tailwind CSS', 'Cloudinary', ],
-      github: 'https://github.com/AngelFeliz17/todo-list',
-      demo: 'https://todo-list-jade-one-26.vercel.app',
-      image: 'bg-gradient-to-br from-green-400 to-blue-500',
-    },
-    {
-      title: 'Point of Sale (POS) System',
-      description:
-        'Built a sales and inventory management system',
-      tech: ['React', 'TypeORM', 'MySQL', 'Typescript'],
-      github: '',
-      demo: '',
-      image: 'bg-gradient-to-br from-yellow-400 to-orange-500',
-    }
-  ]
-
   return (
-    <section
-      id="projects"
-      className="py-20 bg-white"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient">Featured Projects</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
-        </div>
+    <section id="projects" className="py-24 bg-ink-900/40 border-y border-slate-800/80">
+      <div className="section-wrap">
+        <p className="section-kicker">Projects</p>
+        <h2 className="section-title mb-4">Personal projects</h2>
+        <p className="text-slate-400 max-w-2xl mb-12">
+          Selected work spanning full-stack web apps, APIs, and data-heavy features—built for
+          clarity, security, and maintainability.
+        </p>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+        <div className="grid gap-8 lg:grid-cols-1">
+          {projects.map((project) => (
+            <article
+              key={project.title}
+              className="card-surface overflow-hidden flex flex-col lg:flex-row"
             >
-              <div className={`h-48 ${project.image} relative`}>
-                <div className="absolute inset-0 bg-black/20"></div>
+              <div
+                className={`lg:w-2/5 min-h-[140px] bg-gradient-to-br ${project.accent} relative`}
+              >
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,0,0,0.5),transparent)]" />
+                <div className="relative h-full flex flex-col justify-end p-8">
+                  <span
+                    className={`inline-flex self-start rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
+                      project.status === 'In progress'
+                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                        : 'bg-teal-500/15 text-teal-300 border border-teal-500/25'
+                    }`}
+                  >
+                    {project.status}
+                  </span>
+                  <h3 className="font-display mt-4 text-2xl font-bold text-white">
+                    {project.title}
+                  </h3>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex-1 p-8 lg:p-10 flex flex-col">
+                <p className="text-slate-400 leading-relaxed flex-1">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mt-6">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
+                      className="rounded-md border border-slate-700/80 bg-ink-950/40 px-2.5 py-1 text-xs font-medium text-slate-300"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-                {
-                  project.demo !== '' ? (
-                    <div className="flex space-x-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
-                  >
-                    <FaGithub />
-                    <span>Code</span>
-                  </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
-                  >
-                    <FaExternalLinkAlt />
-                    <span>Live Demo</span>
-                  </a>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-teal-400 hover:text-teal-300 transition-colors"
+                    >
+                      <FaGithub />
+                      {project.title === 'Student Marketplace' ? 'GitHub profile' : 'Source'}
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-teal-300 transition-colors"
+                    >
+                      <FaExternalLinkAlt className="text-slate-500" />
+                      Live demo
+                    </a>
+                  )}
                 </div>
-                  ) : null
-                }
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
@@ -105,4 +126,3 @@ const Projects = () => {
 }
 
 export default Projects
-

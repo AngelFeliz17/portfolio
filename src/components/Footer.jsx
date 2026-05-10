@@ -2,43 +2,44 @@ import React from 'react'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 
 const Footer = () => {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="bg-gray-900 text-gray-300 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-lg font-semibold text-white mb-2">Portfolio</p>
-            <p className="text-sm">
-              © {new Date().getFullYear()} All rights reserved.
-            </p>
-          </div>
-          <div className="flex space-x-6">
-            <a
-              href="https://github.com/AngelFeliz17"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
-              aria-label="GitHub"
-            >
-              <FaGithub size={24} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/angel-feliz-694208376/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin size={24} />
-            </a>
-            <a
-              href="mailto:angelsfeliz@hotmail.com"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
-              aria-label="Email"
-            >
-              <FaEnvelope size={24} />
-            </a>
-          </div>
+    <footer className="border-t border-slate-800 bg-ink-950 py-12">
+      <div className="section-wrap flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="font-display text-lg font-bold text-white">Angel S. Feliz</p>
+          <p className="mt-1 text-sm text-slate-500">
+            Computer Science · University of Northern Iowa
+          </p>
+          <p className="mt-3 text-sm text-slate-600">© {year}. All rights reserved.</p>
+        </div>
+        <div className="flex gap-4">
+          <a
+            href="https://github.com/AngelFeliz17"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl border border-slate-800 p-3 text-slate-400 hover:text-white hover:border-teal-500/40 transition-colors"
+            aria-label="GitHub"
+          >
+            <FaGithub size={22} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/angel-feliz-694208376/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl border border-slate-800 p-3 text-slate-400 hover:text-white hover:border-teal-500/40 transition-colors"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin size={22} />
+          </a>
+          <a
+            href="mailto:angelsfeliz@hotmail.com"
+            className="rounded-xl border border-slate-800 p-3 text-slate-400 hover:text-white hover:border-teal-500/40 transition-colors"
+            aria-label="Email"
+          >
+            <FaEnvelope size={22} />
+          </a>
         </div>
       </div>
     </footer>
@@ -46,4 +47,3 @@ const Footer = () => {
 }
 
 export default Footer
-

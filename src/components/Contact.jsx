@@ -1,117 +1,99 @@
 import React, { useState } from 'react'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaCheckCircle, FaExclamationCircle, FaTimes } from 'react-icons/fa'
-import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
-  });
-  const [message, setMessage] = useState('');
+  })
+  const [feedback, setFeedback] = useState('')
 
   const sendEmail = (e) => {
-    e.preventDefault();
-    if(!formData.email || !formData.message || !formData.name){
-      setMessage("Please, complete all fields!");
-      return;
+    e.preventDefault()
+    if (!formData.email || !formData.message || !formData.name) {
+      setFeedback('Please complete all fields.')
+      return
     }
 
     emailjs
-      .sendForm( import.meta.env.VITE_EMAILJS_SERVICE_ID,  import.meta.env.VITE_EMAILJS_TEMPLATE_ID, e.target, {
-        publicKey:  import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      })
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        e.target,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      )
       .then(
         () => {
-          setMessage("Thanks, I will be contacting you as soon as possible!");
-          setFormData({ name: '', email: '', message: '' });
-          setTimeout(() => {
-            setMessage('');
-          }, 7000);
+          setFeedback('Thanks — I will get back to you as soon as I can.')
+          setFormData({ name: '', email: '', message: '' })
+          setTimeout(() => setFeedback(''), 7000)
         },
         (error) => {
-          setMessage("Sorry, there was an error sending your message. Please try again.");
-          console.log('FAILED...', error.text);
-        },
-      );
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+          setFeedback('Something went wrong. Please try again or email me directly.')
+          console.error('EmailJS error:', error.text)
+        }
+      )
   }
 
-  return (
-    <section
-      id="contact"
-      className="py-20 bg-gradient-to-br from-blue-50 to-purple-50"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient">Get In Touch</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
-          <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from
-            you!
-          </p>
-        </div>
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Contact Information
-            </h3>
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-blue-100 p-3 rounded-lg">
-                  <FaEnvelope className="text-blue-600" size={20} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">Email</h4>
-                  <a
-                    href="mailto:angelsfeliz@hotmail.con"
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
-                  >
-                    angelsfeliz@hotmail.com
-                  </a>
-                </div>
+  const isSuccess =
+    feedback.includes('Thanks') || feedback.includes('back to you')
+
+  return (
+    <section id="contact" className="py-24">
+      <div className="section-wrap">
+        <p className="section-kicker">Contact</p>
+        <h2 className="section-title mb-4">Let&apos;s talk</h2>
+        <p className="text-slate-400 max-w-2xl mb-12">
+          Have a role, project, or research idea? Send a message—I read every note.
+        </p>
+
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div className="space-y-8">
+            <div className="card-surface p-6 flex gap-4">
+              <div className="rounded-xl bg-teal-500/10 p-3 h-fit text-teal-400">
+                <FaEnvelope size={20} />
               </div>
-              <div className="flex items-start space-x-4">
-                <div className="bg-purple-100 p-3 rounded-lg">
-                  <FaPhone className="text-purple-600" size={20} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">Phone</h4>
-                  <a
-                    href="tel:+1234567890"
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
-                  >
-                    +1 (669) 278-0843
-                  </a>
-                </div>
+              <div>
+                <h3 className="font-semibold text-white">Email</h3>
+                <a
+                  href="mailto:angelsfeliz@hotmail.com"
+                  className="link-underline text-slate-400 mt-1 inline-block"
+                >
+                  angelsfeliz@hotmail.com
+                </a>
               </div>
-              <div className="flex items-start space-x-4">
-                <div className="bg-green-100 p-3 rounded-lg">
-                  <FaMapMarkerAlt className="text-green-600" size={20} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">Location</h4>
-                  <p className="text-gray-600">United States</p>
-                </div>
+            </div>
+            <div className="card-surface p-6 flex gap-4">
+              <div className="rounded-xl bg-cyan-500/10 p-3 h-fit text-cyan-400">
+                <FaPhone size={20} />
+              </div>
+              <div>
+                <h3 className="font-semibold text-white">Phone</h3>
+                <a href="tel:+16692780843" className="link-underline text-slate-400 mt-1 inline-block">
+                  (669) 278-0843
+                </a>
+              </div>
+            </div>
+            <div className="card-surface p-6 flex gap-4">
+              <div className="rounded-xl bg-amber-500/10 p-3 h-fit text-amber-400">
+                <FaMapMarkerAlt size={20} />
+              </div>
+              <div>
+                <h3 className="font-semibold text-white">Location</h3>
+                <p className="text-slate-400 mt-1">Cedar Falls, Iowa · United States</p>
               </div>
             </div>
           </div>
 
-          <form onSubmit={sendEmail} className="bg-white p-8 rounded-2xl shadow-lg">
-            <div className="mb-6">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
+          <form onSubmit={sendEmail} className="card-surface p-8 lg:p-10">
+            <div className="mb-5">
+              <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-2">
                 Name
               </label>
               <input
@@ -121,15 +103,12 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                placeholder="Your Name"
+                className="w-full rounded-xl border border-slate-700 bg-ink-950/50 px-4 py-3 text-white placeholder:text-slate-600 focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 outline-none transition-all"
+                placeholder="Your name"
               />
             </div>
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
+            <div className="mb-5">
+              <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-2">
                 Email
               </label>
               <input
@@ -139,15 +118,12 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                placeholder="your.email@example.com"
+                className="w-full rounded-xl border border-slate-700 bg-ink-950/50 px-4 py-3 text-white placeholder:text-slate-600 focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 outline-none transition-all"
+                placeholder="you@example.com"
               />
             </div>
             <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
+              <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2">
                 Message
               </label>
               <textarea
@@ -156,43 +132,42 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows="5"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
-                placeholder="Your message..."
-              ></textarea>
+                rows={5}
+                className="w-full resize-none rounded-xl border border-slate-700 bg-ink-950/50 px-4 py-3 text-white placeholder:text-slate-600 focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 outline-none transition-all"
+                placeholder="What would you like to work on?"
+              />
             </div>
-            {message && (
+
+            {feedback && (
               <div
-                className={`mb-4 p-4 rounded-xl border-2 shadow-lg animate-slide-up ${
-                  message.includes('Thanks') || message.includes('contacting')
-                    ? 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-300 text-green-800'
-                    : 'bg-gradient-to-r from-red-50 to-rose-50 border-red-300 text-red-800'
+                className={`mb-5 rounded-xl border px-4 py-3 flex items-start gap-3 ${
+                  isSuccess
+                    ? 'border-teal-500/40 bg-teal-500/10 text-teal-100'
+                    : 'border-red-500/40 bg-red-500/10 text-red-100'
                 }`}
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start space-x-3">
-                    {message.includes('Thanks') || message.includes('contacting') ? (
-                      <FaCheckCircle className="text-green-600 mt-0.5 flex-shrink-0" size={20} />
-                    ) : (
-                      <FaExclamationCircle className="text-red-600 mt-0.5 flex-shrink-0" size={20} />
-                    )}
-                    <p className="text-sm font-medium flex-1">{message}</p>
-                  </div>
-                  <button
-                    onClick={() => setMessage('')}
-                    className="ml-3 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
-                    aria-label="Close message"
-                  >
-                    <FaTimes size={16} />
-                  </button>
-                </div>
+                {isSuccess ? (
+                  <FaCheckCircle className="mt-0.5 shrink-0 text-teal-400" />
+                ) : (
+                  <FaExclamationCircle className="mt-0.5 shrink-0 text-red-400" />
+                )}
+                <p className="text-sm font-medium flex-1">{feedback}</p>
+                <button
+                  type="button"
+                  onClick={() => setFeedback('')}
+                  className="text-slate-400 hover:text-white p-1"
+                  aria-label="Dismiss"
+                >
+                  <FaTimes size={14} />
+                </button>
               </div>
             )}
+
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="w-full rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 py-3.5 font-semibold text-ink-950 shadow-lg shadow-teal-500/15 hover:brightness-110 transition-all"
             >
-              Send Message
+              Send message
             </button>
           </form>
         </div>
@@ -201,4 +176,4 @@ const Contact = () => {
   )
 }
 
-export default Contact;
+export default Contact
