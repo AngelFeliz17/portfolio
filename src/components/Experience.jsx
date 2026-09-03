@@ -11,7 +11,7 @@ const roles = [
     current: true,
     bullets: [
       'Analyzed 3,000+ student records using SQL and Excel to uncover enrollment, yield, and retention trends used in recruitment and student-success planning.',
-      'Built 10+ Tableau dashboards that centralized key recruitment and retention KPIs, giving stakeholders faster access to actionable student insights.',
+      'Built 20+ Tableau dashboards that centralized key recruitment and retention KPIs, giving stakeholders faster access to actionable student insights.',
       'Integrate data from 4+ sources to identify factors associated with admitted students choosing not to enroll.',
       'Develop enrollment projections and visual analyses that inform university budget planning and resource-allocation decisions.',
     ],
@@ -36,7 +36,7 @@ const roles = [
     current: false,
     bullets: [
       'Cleaned, transformed, and integrated 70,000+ business records from four public and commercial sources using Excel, creating an analysis-ready dataset covering all 99 Iowa counties.',
-      'Developed 10+ interactive Tableau dashboards and county-level heat maps that enabled stakeholders to analyze regional business-succession trends and guide strategic planning.',
+      'Developed 20+ interactive Tableau dashboards and county-level heat maps that enabled stakeholders to analyze regional business-succession trends and guide strategic planning.',
       'Built an internal tracking and reporting system that automatically generates annual Excel and PDF reports, reducing manual data entry by 80% and saving 3 hours per day.',
     ],
   },

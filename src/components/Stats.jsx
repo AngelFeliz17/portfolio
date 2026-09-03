@@ -4,7 +4,7 @@ import Reveal from './Reveal'
 
 const stats = [
   { to: 70000, suffix: '+', label: 'Business records cleaned' },
-  { to: 10, suffix: '+', label: 'Tableau dashboards shipped' },
+  { to: 20, suffix: '+', label: 'Tableau dashboards shipped' },
   { to: 98, suffix: '%', label: 'Data accuracy maintained' },
   { to: 3.54, decimals: 2, label: 'GPA' },
 ]
