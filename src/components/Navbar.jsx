@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import ThemeToggle from './ThemeToggle'
+import CommandPalette from './CommandPalette'
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -26,15 +28,15 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'border-b border-slate-800/80 bg-ink-950/85 backdrop-blur-md'
+          ? 'border-b border-ink-100 bg-paper/90 backdrop-blur-md'
           : 'bg-transparent'
       }`}
     >
       <nav className="section-wrap">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between gap-4">
           <a
             href="#home"
-            className="font-display text-lg font-bold tracking-tight text-white hover:text-teal-300 transition-colors"
+            className="font-display text-lg italic font-semibold tracking-tight text-ink-900 hover:text-accent transition-colors shrink-0"
           >
             Angel Feliz
           </a>
@@ -44,33 +46,37 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3 py-2 text-sm font-medium text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+                className="px-3 py-2 text-sm font-medium text-ink-500 hover:text-ink-900 rounded-full hover:bg-ink-100/60 transition-colors"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          <button
-            type="button"
-            className="md:hidden p-2 text-slate-300 hover:text-white rounded-lg hover:bg-white/5"
-            onClick={() => setIsMobileMenuOpen((o) => !o)}
-            aria-expanded={isMobileMenuOpen}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
-          </button>
+          <div className="flex items-center gap-2 shrink-0">
+            <CommandPalette />
+            <ThemeToggle />
+            <button
+              type="button"
+              className="md:hidden p-2 text-ink-700 hover:text-ink-900 rounded-lg hover:bg-ink-100/60"
+              onClick={() => setIsMobileMenuOpen((o) => !o)}
+              aria-expanded={isMobileMenuOpen}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+            </button>
+          </div>
         </div>
       </nav>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-800 bg-ink-950/95 backdrop-blur-md">
+        <div className="md:hidden border-t border-ink-100 bg-paper/95 backdrop-blur-md">
           <div className="section-wrap py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3 py-3 text-base font-medium text-slate-300 hover:text-white rounded-lg hover:bg-white/5"
+                className="px-3 py-3 text-base font-medium text-ink-700 hover:text-ink-900 rounded-lg hover:bg-ink-100/60"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}

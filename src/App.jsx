@@ -1,6 +1,9 @@
 import React from 'react'
+import { ThemeProvider } from './context/ThemeContext'
+import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Stats from './components/Stats'
 import About from './components/About'
 import Education from './components/Education'
 import Experience from './components/Experience'
@@ -12,20 +15,24 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen bg-ink-950">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Education />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Activities />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-paper">
+        <ScrollProgress />
+        <Navbar />
+        <main>
+          <Hero />
+          <Stats />
+          <About />
+          <Education />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Activities />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }
 

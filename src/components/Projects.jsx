@@ -1,16 +1,22 @@
-import React from 'react'
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import React, { useMemo, useState } from 'react'
+import { FaGithub, FaExternalLinkAlt, FaExpand } from 'react-icons/fa'
+import Reveal from './Reveal'
+import TiltCard from './TiltCard'
+import ProjectModal from './ProjectModal'
+import studentMarketplaceImg from '../assets/projects/pantherx.webp'
+import socialMediaImg from '../assets/projects/social-media.webp'
+import posSystemImg from '../assets/projects/pos-system.svg'
 
 const projects = [
   {
     title: 'Student Marketplace',
-    status: 'In progress',
+    status: 'Shipped',
     description:
-      'Full-stack marketplace with secure authentication, relational data models, and OpenAI-powered content insights. Backend containerized for scalable deployment.',
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Prisma', 'OpenAI API', 'Docker'],
+      'Full-stack marketplace with secure authentication and relational data models supporting 100+ registered users. Backend services containerized with Docker for scalable deployment, plus an admin dashboard that turns marketplace data into interactive KPIs and charts for tracking user growth, listing activity, engagement, and reported content.',
+    tech: ['Next.js', 'NestJS', 'PostgreSQL', 'Prisma', 'Docker'],
     github: 'https://github.com/AngelFeliz17/student_marketplace',
-    demo: null,
-    accent: 'from-violet-500/30 to-fuchsia-500/20',
+    demo: 'https://pantherx.vercel.app',
+    image: studentMarketplaceImg,
   },
   {
     title: 'Social Media Platform',
@@ -30,7 +36,7 @@ const projects = [
     ],
     github: 'https://github.com/AngelFeliz17/BestSocialApp',
     demo: 'https://best-social-app.vercel.app/',
-    accent: 'from-cyan-500/30 to-teal-500/20',
+    image: socialMediaImg,
   },
   {
     title: 'Point of Sale (POS) System',
@@ -40,87 +46,142 @@ const projects = [
     tech: ['TypeScript', 'TypeORM', 'MySQL', 'Tailwind CSS'],
     github: null,
     demo: null,
-    accent: 'from-amber-500/25 to-orange-500/15',
+    image: posSystemImg,
   },
 ]
 
+const filters = ['All', ...Array.from(new Set(projects.flatMap((p) => p.tech)))]
+
 const Projects = () => {
+  const [activeFilter, setActiveFilter] = useState('All')
+  const [selectedProject, setSelectedProject] = useState(null)
+
+  const visibleProjects = useMemo(
+    () =>
+      activeFilter === 'All'
+        ? projects
+        : projects.filter((p) => p.tech.includes(activeFilter)),
+    [activeFilter]
+  )
+
   return (
-    <section id="projects" className="py-24 bg-ink-900/40 border-y border-slate-800/80">
+    <section id="projects" className="py-24 bg-paper-subtle border-y border-ink-100">
       <div className="section-wrap">
         <p className="section-kicker">Projects</p>
         <h2 className="section-title mb-4">Personal projects</h2>
-        <p className="text-slate-400 max-w-2xl mb-12">
-          Selected work spanning full-stack web apps, APIs, and data-heavy features—built for
-          clarity, security, and maintainability.
+        <p className="text-ink-500 max-w-2xl mb-8">
+          Selected work spanning full-stack web apps, APIs, and data-heavy features&mdash;built
+          for clarity, security, and maintainability. Click a card to preview it, or filter by
+          stack below.
         </p>
 
-        <div className="grid gap-8 lg:grid-cols-1">
-          {projects.map((project) => (
-            <article
-              key={project.title}
-              className="card-surface overflow-hidden flex flex-col lg:flex-row"
+        <div className="flex flex-wrap gap-2 mb-10">
+          {filters.map((tech) => (
+            <button
+              key={tech}
+              type="button"
+              onClick={() => setActiveFilter(tech)}
+              className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors ${
+                activeFilter === tech
+                  ? 'border-accent bg-accent text-paper'
+                  : 'border-ink-200 bg-paper text-ink-500 hover:border-accent/50 hover:text-ink-900'
+              }`}
             >
-              <div
-                className={`lg:w-2/5 min-h-[140px] bg-gradient-to-br ${project.accent} relative`}
+              {tech}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {visibleProjects.map((project, i) => (
+            <Reveal key={project.title} delay={i * 80}>
+              <TiltCard
+                className="card-surface overflow-hidden h-full flex flex-col cursor-pointer group"
+                onClick={() => setSelectedProject(project)}
               >
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,0,0,0.5),transparent)]" />
-                <div className="relative h-full flex flex-col justify-end p-8">
+                <div className="relative overflow-hidden border-b border-ink-100">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} preview`}
+                    className="w-full aspect-[400/260] object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-ink-900/0 group-hover:bg-ink-900/30 transition-colors">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity inline-flex items-center gap-2 rounded-full bg-paper-card px-4 py-2 text-sm font-semibold text-ink-900">
+                      <FaExpand size={12} />
+                      Preview
+                    </span>
+                  </div>
                   <span
-                    className={`inline-flex self-start rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
+                    className={`absolute top-3 left-3 inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
                       project.status === 'In progress'
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                        : 'bg-teal-500/15 text-teal-300 border border-teal-500/25'
+                        ? 'bg-gold-light text-gold border border-gold/25'
+                        : 'bg-accent-light text-accent-dark border border-accent/20'
                     }`}
                   >
                     {project.status}
                   </span>
-                  <h3 className="font-display mt-4 text-2xl font-bold text-white">
+                </div>
+
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="font-display text-xl font-semibold text-ink-900">
                     {project.title}
                   </h3>
+                  <p className="text-ink-500 leading-relaxed mt-2 text-sm line-clamp-3 flex-1">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mt-4">
+                    {project.tech.slice(0, 4).map((tech) => (
+                      <span key={tech} className="tag-pill text-[11px] px-2 py-0.5">
+                        {tech}
+                      </span>
+                    ))}
+                    {project.tech.length > 4 && (
+                      <span className="tag-pill text-[11px] px-2 py-0.5">
+                        +{project.tech.length - 4}
+                      </span>
+                    )}
+                  </div>
+                  <div
+                    className="mt-5 flex flex-wrap gap-5"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-dark transition-colors"
+                      >
+                        <FaGithub />
+                        {project.title === 'Student Marketplace' ? 'GitHub' : 'Source'}
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-ink-900 hover:text-accent transition-colors"
+                      >
+                        <FaExternalLinkAlt className="text-ink-400" />
+                        Live
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="flex-1 p-8 lg:p-10 flex flex-col">
-                <p className="text-slate-400 leading-relaxed flex-1">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mt-6">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-md border border-slate-700/80 bg-ink-950/40 px-2.5 py-1 text-xs font-medium text-slate-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-teal-400 hover:text-teal-300 transition-colors"
-                    >
-                      <FaGithub />
-                      {project.title === 'Student Marketplace' ? 'GitHub profile' : 'Source'}
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-teal-300 transition-colors"
-                    >
-                      <FaExternalLinkAlt className="text-slate-500" />
-                      Live demo
-                    </a>
-                  )}
-                </div>
-              </div>
-            </article>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
+
+        {visibleProjects.length === 0 && (
+          <p className="text-center text-ink-400 py-16">
+            No projects use {activeFilter} yet&mdash;try another filter.
+          </p>
+        )}
       </div>
+
+      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   )
 }

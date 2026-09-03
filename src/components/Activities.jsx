@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaHandsHelping, FaUsers, FaUniversity } from 'react-icons/fa'
+import Reveal from './Reveal'
 
 const activities = [
   {
@@ -38,43 +39,42 @@ const activities = [
 
 const Activities = () => {
   return (
-    <section id="activities" className="py-24 bg-ink-900/40 border-y border-slate-800/80">
+    <section id="activities" className="py-24 bg-paper-subtle border-y border-ink-100">
       <div className="section-wrap">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-4 lg:sticky lg:top-24">
             <p className="section-kicker">Activities & leadership</p>
             <h2 className="section-title">Community</h2>
-            <p className="mt-4 text-slate-400 text-sm leading-relaxed max-w-sm">
+            <p className="mt-4 text-ink-500 text-sm leading-relaxed max-w-sm">
               Campus and community roles focused on leadership, inclusion, and service.
             </p>
           </div>
           <div className="lg:col-span-8 space-y-6">
-            {activities.map((item) => (
-              <article
-                key={item.title}
-                className="card-surface p-8 lg:p-10 flex flex-col sm:flex-row gap-6"
-              >
-                <div className="rounded-2xl bg-teal-500/10 p-4 h-fit text-teal-400">
-                  <item.icon size={28} aria-hidden />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="font-display text-xl font-bold text-white leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-teal-400/90 font-medium mt-1">{item.role}</p>
-                  <p className="text-sm text-slate-500 mt-2">
-                    {item.location} · {item.period}
-                  </p>
-                  <ul className="mt-6 space-y-3 text-slate-400 leading-relaxed">
-                    {item.bullets.map((b) => (
-                      <li key={b} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500/80" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
+            {activities.map((item, i) => (
+              <Reveal key={item.title} delay={i * 90}>
+                <article className="card-surface p-8 lg:p-10 flex flex-col sm:flex-row gap-6 transition-transform hover:-translate-y-1">
+                  <div className="rounded-lg bg-accent-light p-4 h-fit text-accent">
+                    <item.icon size={26} aria-hidden />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-display text-xl font-semibold text-ink-900 leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-accent font-medium mt-1">{item.role}</p>
+                    <p className="text-sm text-ink-400 mt-2">
+                      {item.location} · {item.period}
+                    </p>
+                    <ul className="mt-6 space-y-3 text-ink-500 leading-relaxed">
+                      {item.bullets.map((b) => (
+                        <li key={b} className="flex gap-3">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>

@@ -6,15 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Angel S. Feliz — Computer Science student at UNI. ML, full-stack development, and research in AI-driven systems."
+      content="Angel S. Feliz — Computer Science student and data analyst at the University of Northern Iowa. Analytics, dashboards, and full-stack development."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <title>Angel S. Feliz — Portfolio</title>
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme')
+        var isDark =
+          stored === 'dark' ||
+          (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.toggle('dark', isDark)
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

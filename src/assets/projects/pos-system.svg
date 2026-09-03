@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
+  <rect width="400" height="260" fill="#f1ece1" />
+  <rect width="400" height="28" fill="#e6ded0" />
+  <circle cx="16" cy="14" r="4" fill="#1c1a17" opacity="0.4" />
+  <circle cx="30" cy="14" r="4" fill="#1c1a17" opacity="0.28" />
+  <circle cx="44" cy="14" r="4" fill="#1c1a17" opacity="0.16" />
+  <rect x="140" y="8" width="120" height="12" rx="6" fill="#fffdf9" opacity="0.7" />
+
+  <g fill="#fffdf9">
+    <rect x="24" y="44" width="108" height="46" rx="8" />
+    <rect x="146" y="44" width="108" height="46" rx="8" />
+    <rect x="268" y="44" width="108" height="46" rx="8" />
+  </g>
+  <g fill="#3f6f52">
+    <rect x="36" y="56" width="30" height="10" rx="3" />
+    <rect x="158" y="56" width="30" height="10" rx="3" />
+    <rect x="280" y="56" width="30" height="10" rx="3" />
+  </g>
+  <g fill="#3a362f" opacity="0.45">
+    <rect x="36" y="72" width="60" height="6" rx="3" />
+    <rect x="158" y="72" width="60" height="6" rx="3" />
+    <rect x="280" y="72" width="60" height="6" rx="3" />
+  </g>
+
+  <g fill="#a97a3c">
+    <rect x="24" y="150" width="36" height="60" rx="3" />
+    <rect x="70" y="130" width="36" height="80" rx="3" />
+    <rect x="116" y="110" width="36" height="100" rx="3" />
+    <rect x="162" y="140" width="36" height="70" rx="3" />
+    <rect x="208" y="95" width="36" height="115" rx="3" />
+  </g>
+
+  <g fill="#fffdf9">
+    <rect x="264" y="104" width="112" height="106" rx="8" />
+  </g>
+  <g fill="#3a362f" opacity="0.5">
+    <rect x="276" y="118" width="88" height="6" rx="3" />
+    <rect x="276" y="140" width="88" height="6" rx="3" />
+    <rect x="276" y="162" width="60" height="6" rx="3" />
+  </g>
+  <g stroke="#d9d2c1" stroke-width="1">
+    <line x1="276" y1="130" x2="364" y2="130" />
+    <line x1="276" y1="152" x2="364" y2="152" />
+  </g>
+  <rect x="276" y="182" width="52" height="16" rx="8" fill="#3f6f52" />
+</svg>
