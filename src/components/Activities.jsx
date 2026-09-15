@@ -21,7 +21,7 @@ const activities = [
     location: 'Cedar Rapids, Iowa',
     period: 'Aug 2025 – Dec 2025',
     bullets: [
-      'Responsible for planning cultural and community events that promote inclusion and diversity among international and local students.',
+      'Planned and led cultural events for 65+ students, promoting engagement between international and domestic communities.',
     ],
   },
   {

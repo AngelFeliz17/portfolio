@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowDown } from 'react-icons/fa'
+import resumeUrl from '../assets/angel-feliz-data-science-resume.pdf'
 
 const Hero = () => {
   return (
@@ -10,16 +11,16 @@ const Hero = () => {
       <div className="section-wrap relative">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent mb-6 opacity-0 animate-fade-in">
-            Portfolio · Computer Science
+            Portfolio · Data Science &amp; Software Development
           </p>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-semibold text-ink-900 leading-[1.05] opacity-0 animate-slide-up">
             Angel S.{' '}
             <span className="text-gradient">Feliz</span>
           </h1>
           <p className="mt-8 text-lg sm:text-xl text-ink-500 max-w-xl leading-relaxed opacity-0 animate-slide-up delay-100">
-            B.S. Computer Science (Data Science minor) at the University of Northern Iowa.
-            I turn raw data into dashboards and insights and build full-stack applications
-            &mdash; from Tableau reports to production APIs.
+            Computer Science student with a Data Science minor at the University of Northern Iowa.
+            I turn data into insights, build full-stack applications, and develop deep learning
+            models for animal-footprint research.
           </p>
           <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-ink-200 px-4 py-2 text-sm text-ink-500 opacity-0 animate-slide-up delay-100">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
@@ -32,6 +33,9 @@ const Hero = () => {
             </a>
             <a href="#contact" className="btn-secondary">
               Get in touch
+            </a>
+            <a href={resumeUrl} download="Angel Feliz - Data Science Resume.pdf" className="btn-secondary">
+              Download resume
             </a>
           </div>
 

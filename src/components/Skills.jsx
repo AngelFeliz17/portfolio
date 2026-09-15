@@ -9,6 +9,7 @@ import {
   FaRobot,
   FaTerminal,
   FaMagic,
+  FaExchangeAlt,
 } from 'react-icons/fa'
 import {
   SiJavascript,
@@ -30,13 +31,16 @@ import {
   SiPowerbi,
   SiMicrosoftexcel,
   SiTableau,
+  SiPytorch,
+  SiNextdotjs,
 } from 'react-icons/si'
 import Reveal from './Reveal'
 
 const categories = [
   {
-    name: 'Data Analytics',
+    name: 'Data Analytics & Machine Learning',
     items: [
+      { label: 'PyTorch', icon: SiPytorch },
       { label: 'Excel', icon: SiMicrosoftexcel },
       { label: 'Tableau', icon: SiTableau },
       { label: 'Power BI', icon: SiPowerbi },
@@ -68,6 +72,7 @@ const categories = [
   {
     name: 'Development',
     items: [
+      { label: 'Next.js', icon: SiNextdotjs },
       { label: 'React', icon: FaReact },
       { label: 'Node.js', icon: FaNodeJs },
       { label: 'NestJS', icon: SiNestjs },
@@ -78,6 +83,7 @@ const categories = [
       { label: 'Docker', icon: FaDocker },
       { label: 'AWS', icon: FaAws },
       { label: 'Git', icon: SiGit },
+      { label: 'REST APIs', icon: FaExchangeAlt },
     ],
   },
   {

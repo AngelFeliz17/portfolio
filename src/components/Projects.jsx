@@ -6,11 +6,25 @@ import ProjectModal from './ProjectModal'
 import studentMarketplaceImg from '../assets/projects/pantherx.webp'
 import socialMediaImg from '../assets/projects/social-media.webp'
 import posSystemImg from '../assets/projects/pos-system.svg'
+import animalFootprintsImg from '../assets/projects/animal-footprints.svg'
 
 const projects = [
   {
-    title: 'Student Marketplace',
+    title: 'Animal Footprint Analysis',
+    status: 'In progress',
+    period: 'Sep 2026 – Present',
+    description:
+      'Undergraduate machine learning research developing deep learning models to classify and analyze animal footprints for paleontological research using computer vision and style transfer. Building training datasets from online imagery and experimentally generated footprints across snow and soil.',
+    tech: ['PyTorch', 'Deep Learning', 'Computer Vision', 'Style Transfer'],
+    github: null,
+    demo: null,
+    image: animalFootprintsImg,
+    imageAlt: 'Illustration of a footprint framed for computer vision analysis',
+  },
+  {
+    title: 'PantherX — Student Marketplace',
     status: 'Shipped',
+    period: 'Jul 2026',
     description:
       'Full-stack marketplace with secure authentication and relational data models supporting 100+ registered users. Backend services containerized with Docker for scalable deployment, plus an admin dashboard that turns marketplace data into interactive KPIs and charts for tracking user growth, listing activity, engagement, and reported content.',
     tech: ['Next.js', 'NestJS', 'PostgreSQL', 'Prisma', 'Docker'],
@@ -68,11 +82,10 @@ const Projects = () => {
     <section id="projects" className="py-24 bg-paper-subtle border-y border-ink-100">
       <div className="section-wrap">
         <p className="section-kicker">Projects</p>
-        <h2 className="section-title mb-4">Personal projects</h2>
+        <h2 className="section-title mb-4">Research &amp; projects</h2>
         <p className="text-ink-500 max-w-2xl mb-8">
-          Selected work spanning full-stack web apps, APIs, and data-heavy features&mdash;built
-          for clarity, security, and maintainability. Click a card to preview it, or filter by
-          stack below.
+          From animal-footprint research using deep learning to full-stack applications and
+          analytics dashboards. Click a card to explore the work, or filter by technology below.
         </p>
 
         <div className="flex flex-wrap gap-2 mb-10">
@@ -102,7 +115,7 @@ const Projects = () => {
                 <div className="relative overflow-hidden border-b border-ink-100">
                   <img
                     src={project.image}
-                    alt={`${project.title} preview`}
+                    alt={project.imageAlt || `${project.title} preview`}
                     className="w-full aspect-[400/260] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-ink-900/0 group-hover:bg-ink-900/30 transition-colors">
@@ -126,6 +139,9 @@ const Projects = () => {
                   <h3 className="font-display text-xl font-semibold text-ink-900">
                     {project.title}
                   </h3>
+                  {project.period && (
+                    <p className="mt-2 text-xs text-ink-400">{project.period}</p>
+                  )}
                   <p className="text-ink-500 leading-relaxed mt-2 text-sm line-clamp-3 flex-1">
                     {project.description}
                   </p>
@@ -153,7 +169,7 @@ const Projects = () => {
                         className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-dark transition-colors"
                       >
                         <FaGithub />
-                        {project.title === 'Student Marketplace' ? 'GitHub' : 'Source'}
+                        GitHub
                       </a>
                     )}
                     {project.demo && (
@@ -186,4 +202,4 @@ const Projects = () => {
   )
 }
 
-export default Projects
+export default Projects;

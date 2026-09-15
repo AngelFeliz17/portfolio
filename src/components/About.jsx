@@ -12,10 +12,16 @@ const About = () => {
           </Reveal>
           <Reveal delay={100} className="lg:col-span-7 space-y-6 text-lg text-ink-500 leading-relaxed">
             <p>
-              I write code the way some people drink coffee&mdash;often, enthusiastically, and
-              sometimes at 3&nbsp;a.m. I did not become a software engineer because it was
-              trendy; I did it because nothing beats telling a computer what to do and having
-              it listen&hellip; eventually.
+              I study Computer Science and Data Science at the University of Northern Iowa,
+              where I work in business intelligence and student-data analysis. I use SQL,
+              Python, R, and Tableau to explore enrollment and student performance, build
+              dashboards, and help teams make informed decisions.
+            </p>
+            <p>
+              My undergraduate research focuses on classifying and analyzing animal footprints
+              for paleontology using PyTorch, computer vision, and style transfer. I also build
+              full-stack applications, including PantherX, a student marketplace with 100+
+              registered users.
             </p>
             <p>
               Outside of debugging my own decisions, I play golf and chess, and I stay

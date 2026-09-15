@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
+  <title>Animal footprint research illustration</title>
+  <rect width="400" height="260" fill="#f1ece1" />
+  <g stroke="#d9d2c1" stroke-width="1" opacity="0.65">
+    <path d="M40 0v260M80 0v260M120 0v260M160 0v260M200 0v260M240 0v260M280 0v260M320 0v260M360 0v260" />
+    <path d="M0 40h400M0 80h400M0 120h400M0 160h400M0 200h400M0 240h400" />
+  </g>
+  <rect x="102" y="48" width="196" height="164" rx="16" fill="#fffdf9" />
+  <g fill="none" stroke="#3f6f52" stroke-width="2" stroke-linecap="round">
+    <path d="M120 86V68h18M262 68h18v18M280 174v18h-18M138 192h-18v-18" />
+  </g>
+  <g fill="#3f6f52">
+    <ellipse cx="164" cy="116" rx="12" ry="18" transform="rotate(-25 164 116)" />
+    <ellipse cx="188" cy="97" rx="12" ry="18" transform="rotate(-8 188 97)" />
+    <ellipse cx="214" cy="98" rx="12" ry="18" transform="rotate(12 214 98)" />
+    <ellipse cx="238" cy="118" rx="12" ry="18" transform="rotate(28 238 118)" />
+    <path d="M173 143c9-9 14-21 27-21s18 12 27 21c8 8 9 22-1 27-9 5-16-2-26-2s-17 7-26 2c-10-5-9-19-1-27Z" />
+  </g>
+  <g fill="#a97a3c">
+    <circle cx="58" cy="110" r="5" />
+    <circle cx="58" cy="150" r="5" />
+    <circle cx="342" cy="110" r="5" />
+    <circle cx="342" cy="150" r="5" />
+  </g>
+  <g fill="none" stroke="#a97a3c" stroke-width="1.5" opacity="0.6">
+    <path d="M63 110h18l14 20-14 20H63M305 130l14-20h18M305 130l14 20h18" />
+  </g>
+</svg>

@@ -33,7 +33,7 @@ const ProjectModal = ({ project, onClose }) => {
         <div className="relative">
           <img
             src={project.image}
-            alt={`${project.title} preview`}
+            alt={project.imageAlt || `${project.title} preview`}
             className="w-full aspect-[400/260] object-cover rounded-t-lg border-b border-ink-100"
           />
           <button
@@ -59,6 +59,9 @@ const ProjectModal = ({ project, onClose }) => {
           <h3 className="font-display mt-3 text-2xl font-semibold text-ink-900">
             {project.title}
           </h3>
+          {project.period && (
+            <p className="mt-2 text-sm text-ink-400">{project.period}</p>
+          )}
           <p className="text-ink-500 leading-relaxed mt-4">{project.description}</p>
 
           <div className="flex flex-wrap gap-2 mt-6">
@@ -78,7 +81,7 @@ const ProjectModal = ({ project, onClose }) => {
                 className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-dark transition-colors"
               >
                 <FaGithub />
-                {project.title === 'Student Marketplace' ? 'GitHub profile' : 'Source'}
+                Source code
               </a>
             )}
             {project.demo && (

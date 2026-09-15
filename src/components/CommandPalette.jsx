@@ -40,8 +40,8 @@ const CommandPalette = () => {
         action: () => scrollTo('#experience'),
       },
       {
-        label: 'Projects',
-        keywords: 'work portfolio apps',
+        label: 'Research & projects',
+        keywords: 'work portfolio apps machine learning footprints pantherx',
         icon: FaCode,
         action: () => scrollTo('#projects'),
       },

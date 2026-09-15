@@ -4,27 +4,29 @@ import Reveal from './Reveal'
 
 const roles = [
   {
-    title: 'Data Analyst',
+    title: 'Business Intelligence',
     org: 'University of Northern Iowa — Institutional Effectiveness and Planning',
     location: 'Cedar Falls, Iowa',
     period: 'Aug 2026 – Present',
     current: true,
+    tech: ['SQL', 'Python', 'Tableau', 'Excel'],
     bullets: [
-      'Analyzed 3,000+ student records using SQL and Excel to uncover enrollment, yield, and retention trends used in recruitment and student-success planning.',
-      'Built 20+ Tableau dashboards that centralized key recruitment and retention KPIs, giving stakeholders faster access to actionable student insights.',
-      'Integrate data from 4+ sources to identify factors associated with admitted students choosing not to enroll.',
+      'Analyze 3,000+ student records using SQL and Excel to uncover enrollment, yield, and retention trends used in recruitment and student-success planning.',
+      'Build and maintain 50+ Tableau dashboards that centralize key recruitment and retention KPIs, giving stakeholders faster access to actionable student insights.',
+      'Integrate data from 10+ sources to identify factors associated with admitted students choosing not to enroll.',
       'Develop enrollment projections and visual analyses that inform university budget planning and resource-allocation decisions.',
     ],
   },
   {
-    title: 'Data Management Assistant',
+    title: 'Data Analyst',
     org: 'University of Northern Iowa — College of Education',
     location: 'Cedar Falls, Iowa',
     period: 'Jul 2026 – Present',
     current: true,
+    tech: ['Python', 'R', 'Excel'],
     bullets: [
-      'Analyze 8,000+ student records to identify performance trends over time, helping academic advisors develop targeted student-support and intervention strategies.',
-      'Validate and reconcile approximately 400+ student records weekly across multiple source files, identifying incomplete or conflicting information before submission.',
+      'Analyze 8,000+ student records using Python and R to identify performance trends over time, helping academic advisors develop targeted student-support and intervention strategies.',
+      'Validate and reconcile 400+ student records weekly across multiple source files, identifying incomplete or conflicting information before submission.',
       'Maintain 98% data accuracy, reducing downstream corrections and improving the reliability of institutional records.',
     ],
   },
@@ -34,9 +36,10 @@ const roles = [
     location: 'Cedar Falls, Iowa',
     period: 'Jun 2026 – Aug 2026',
     current: false,
+    tech: ['TypeScript', 'Next.js', 'PostgreSQL', 'Python', 'Tableau'],
     bullets: [
       'Cleaned, transformed, and integrated 70,000+ business records from four public and commercial sources using Excel, creating an analysis-ready dataset covering all 99 Iowa counties.',
-      'Developed 20+ interactive Tableau dashboards and county-level heat maps that enabled stakeholders to analyze regional business-succession trends and guide strategic planning.',
+      'Developed 10+ interactive Tableau dashboards and county-level heat maps that enabled stakeholders to analyze regional business-succession trends and guide strategic planning.',
       'Built an internal tracking and reporting system that automatically generates annual Excel and PDF reports, reducing manual data entry by 80% and saving 3 hours per day.',
     ],
   },
@@ -88,6 +91,13 @@ const Experience = () => {
                     </span>
                   )}
                 </div>
+                {job.tech && (
+                  <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
+                    {job.tech.map((tech) => (
+                      <li key={tech} className="tag-pill">{tech}</li>
+                    ))}
+                  </ul>
+                )}
                 <ul className="mt-8 space-y-3 text-ink-500 leading-relaxed">
                   {job.bullets.map((b) => (
                     <li key={b} className="flex gap-3">
