@@ -4,17 +4,16 @@ import Reveal from './Reveal'
 
 const roles = [
   {
-    title: 'Business Intelligence',
+    title: 'Data Scientist',
     org: 'University of Northern Iowa — Institutional Effectiveness and Planning',
     location: 'Cedar Falls, Iowa',
     period: 'Aug 2026 – Present',
     current: true,
-    tech: ['SQL', 'Python', 'Tableau', 'Excel'],
+    tech: ['Python', 'CatBoost', 'Scikit-learn', 'SQL', 'Tableau'],
     bullets: [
-      'Analyze 3,000+ student records using SQL and Excel to uncover enrollment, yield, and retention trends used in recruitment and student-success planning.',
-      'Build and maintain 50+ Tableau dashboards that centralize key recruitment and retention KPIs, giving stakeholders faster access to actionable student insights.',
-      'Integrate data from 10+ sources to identify factors associated with admitted students choosing not to enroll.',
-      'Develop enrollment projections and visual analyses that inform university budget planning and resource-allocation decisions.',
+      'Develop a CatBoost classification model in Python using 10,000+ annual applicant records to predict student enrollment likelihood based on admissions timing, residency, FAFSA completion, campus visits, and academic program data, supporting recruitment and enrollment forecasting.',
+      'Analyze longitudinal ALEKS placement and course-performance data to identify discrepancies between placement results and student outcomes, comparing recent cohorts with historical trends to investigate potential AI-assisted testing and placement-integrity concerns.',
+      'Build and maintain 50+ Tableau dashboards, integrating data from 10+ sources to track institutional KPIs and support enrollment forecasting, budget planning, and resource allocation.',
     ],
   },
   {

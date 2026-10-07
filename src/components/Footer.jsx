@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { SiTableau } from 'react-icons/si'
 
 const Footer = () => {
   const year = new Date().getFullYear()
@@ -32,6 +33,16 @@ const Footer = () => {
             aria-label="LinkedIn"
           >
             <FaLinkedin size={20} />
+          </a>
+          <a
+            href="https://public.tableau.com/app/profile/angel.feliz/vizzes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-ink-200 p-3 text-ink-500 hover:text-ink-900 hover:border-ink-900 transition-colors"
+            aria-label="Tableau Public"
+            title="Tableau Public"
+          >
+            <SiTableau size={20} aria-hidden="true" />
           </a>
           <a
             href="mailto:angelsfeliz@hotmail.com"

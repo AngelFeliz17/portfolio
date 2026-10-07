@@ -13,7 +13,7 @@ const About = () => {
           <Reveal delay={100} className="lg:col-span-7 space-y-6 text-lg text-ink-500 leading-relaxed">
             <p>
               I study Computer Science and Data Science at the University of Northern Iowa,
-              where I work in business intelligence and student-data analysis. I use SQL,
+              where I work in data science and student-data analysis. I use SQL,
               Python, R, and Tableau to explore enrollment and student performance, build
               dashboards, and help teams make informed decisions.
             </p>

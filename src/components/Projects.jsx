@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { FaGithub, FaExternalLinkAlt, FaExpand } from 'react-icons/fa'
+import { SiTableau } from 'react-icons/si'
 import Reveal from './Reveal'
 import TiltCard from './TiltCard'
 import ProjectModal from './ProjectModal'
@@ -83,10 +84,20 @@ const Projects = () => {
       <div className="section-wrap">
         <p className="section-kicker">Projects</p>
         <h2 className="section-title mb-4">Research &amp; projects</h2>
-        <p className="text-ink-500 max-w-2xl mb-8">
+        <p className="text-ink-500 max-w-2xl mb-6">
           From animal-footprint research using deep learning to full-stack applications and
           analytics dashboards. Click a card to explore the work, or filter by technology below.
         </p>
+        <a
+          href="https://public.tableau.com/app/profile/angel.feliz/vizzes"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-secondary gap-2 mb-8"
+        >
+          <SiTableau size={18} aria-hidden="true" />
+          View my Tableau Public profile
+          <FaExternalLinkAlt size={12} aria-hidden="true" />
+        </a>
 
         <div className="flex flex-wrap gap-2 mb-10">
           {filters.map((tech) => (
